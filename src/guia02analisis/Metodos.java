@@ -1,7 +1,7 @@
 package guia02analisis;
 
 import javax.swing.JOptionPane;
-
+import java.text.DecimalFormat;
 
 public class Metodos {
     Double Biseccion1(int c,int n){
@@ -16,16 +16,13 @@ public class Metodos {
         Es=(0.5)*Math.pow(10,2-n);
           System.out.println("tolerancia "+Es );
          Ea=((funcion-funant)/funcion)*100;
-         Ea=redondearDecimales(Ea, 8);
           while (Math.abs(Ea)>Es) {              
               funant=funcion;
-              funant=redondearDecimales(funant, n);
+              System.out.println("Xi Xu Xr: "+xi+" "+xu+" "+xr);
                xr=(xi+xu)/2;
                xr=redondearDecimales(xr, 8);
               funcion=(Math.exp(xi-1)-(1.5*xi))*(Math.exp(xr-1)-(1.5*xr));
-              funcion=redondearDecimales(funcion,n);
               Ea=((funcion-funant)/funcion)*100;
-              Ea=redondearDecimales(Ea,8);
               if (funcion<0) {
                   xu=xr;
               }else{
@@ -37,7 +34,7 @@ public class Metodos {
          if(c==1){
              return xr;
          }else{
-             return Math.abs(Ea);
+             return Ea;
          }
       }
     }
