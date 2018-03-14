@@ -2,11 +2,14 @@
 package guia02analisis;
 
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 public class Bisecciones {
-    Double Biseccion1(int c,int n){
+    DefaultTableModel modelo = new DefaultTableModel(new Object[]{"iteracion","Xi","Xu","Xr","F(Xr)","Ea%"}, 0);
+     
+   public  DefaultTableModel Biseccion1(int n){
       double xi=0,xu=1,xr=0,funcion,xrant=0,Es;
-      double Ea;
+      double Ea=100;
       int i=1;
       funcion=(Math.exp(xi-1)-(1.5*xi))*(Math.exp(xu-1)-(1.5*xu));
       if(funcion>0){
@@ -14,12 +17,16 @@ public class Bisecciones {
           return null;
       }else{
         Es=(0.5)*Math.pow(10,2-n);
-         Ea=((funcion-xrant)/funcion)*100;
           while (Math.abs(Ea)>Es) {              
                xr=(xi+xu)/2;
                xr=Metodos.redondearDecimales(xr, n+1);
               funcion=(Math.exp(xi-1)-(1.5*xi))*(Math.exp(xr-1)-(1.5*xr));
               Ea=((xr-xrant)/xr)*100;
+              if(i==1){
+                  modelo.addRow(new Object []{i,xi,xu,xr,funcion,"--"});
+              }else{
+                  modelo.addRow(new Object []{i,xi,xu,xr,funcion,(Metodos.redondearDecimales(Ea, n))});
+              }
               if (funcion<0) {
                   xu=xr;
               }else{
@@ -28,15 +35,11 @@ public class Bisecciones {
               xrant=xr;
                i++;
           }
-         if(c==1){
-             return xr;
-         }else{
-             return Metodos.redondearDecimales(Math.abs(Ea), n+1);
-         }
+        return modelo; 
       }
     }
 
-    Double Biseccion2(int c,int n){
+    public  DefaultTableModel Biseccion2(int n){
       double xi=-2.3562,xu=Math.PI,xr=0,funcion,xrant=0,Es;
       double Ea=100;
       int i=1;
@@ -59,14 +62,10 @@ public class Bisecciones {
               xrant=xr;
                i++;
           }
-         if(c==1){
-             return Metodos.redondearDecimales(xr, n);
-         }else{
-             return Metodos.redondearDecimales(Math.abs(Ea), n+1);
-         }
+         return modelo;
       }
     }
-    Double Biseccion3(int c,int n){
+    public  DefaultTableModel Biseccion3(int n){
       double xi=1,xu=2,xr=0,funcion,xrant=0,Es;
       double Ea=100;
       int i=1;
@@ -89,14 +88,10 @@ public class Bisecciones {
               xrant=xr;
                i++;
           }
-         if(c==1){
-             return Metodos.redondearDecimales(xr, n);
-         }else{
-             return Metodos.redondearDecimales(Math.abs(Ea), n+1);
-         }
+        return modelo;
       }
     }
-    Double Biseccion4(int c,int n){
+    public  DefaultTableModel Biseccion4(int n){
       double xi=-1,xu=0,xr=0,funcion,xrant=0,Es;
       double Ea=100;
       int i=1;
@@ -121,14 +116,10 @@ public class Bisecciones {
               xrant=xr;
                i++;
           }
-         if(c==1){
-             return Metodos.redondearDecimales(xr, n);
-         }else{
-             return Metodos.redondearDecimales(Math.abs(Ea), n+1);
-         }
+         return modelo;
       }
     }
-    Double Biseccion5(int c,int n){
+    public  DefaultTableModel Biseccion5(int n){
       double xi=0,xu=0.5,xr=0,funcion,xrant=0,Es;
       double Ea=100;
       int i=1;
@@ -151,11 +142,7 @@ public class Bisecciones {
               xrant=xr;
                i++;
           }
-         if(c==1){
-             return Metodos.redondearDecimales(xr, n);
-         }else{
-             return Metodos.redondearDecimales(Math.abs(Ea), n+1);
-         }
+        return modelo;
       }
     }
 //fin de la clase biseccion

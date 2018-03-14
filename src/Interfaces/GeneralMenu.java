@@ -2,7 +2,7 @@
 package Interfaces;
 
 public class GeneralMenu extends javax.swing.JFrame {
-
+NewtonRaphson n = new NewtonRaphson();
     /**
      * Creates new form GeneralMenu
      */
@@ -21,53 +21,55 @@ public class GeneralMenu extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
+        MetBiss = new javax.swing.JButton();
+        MetFP = new javax.swing.JButton();
+        MEtGraf = new javax.swing.JButton();
+        MetIPF = new javax.swing.JButton();
+        MetNR = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jButton4 = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        cmbselect = new javax.swing.JComboBox();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("ANALISIS NUMERICO 2018");
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton1.setText("Metodo Biseccion");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        MetBiss.setText("Metodo Biseccion");
+        MetBiss.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                MetBissActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 110, -1, -1));
+        getContentPane().add(MetBiss, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 190, -1, -1));
 
-        jButton2.setText("Metodo Falsa Posicion");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        MetFP.setText("Metodo Falsa Posicion");
+        MetFP.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                MetFPActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 150, -1, -1));
+        getContentPane().add(MetFP, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 230, -1, -1));
 
-        jButton3.setText("Metodo Grafico");
-        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, -1, -1));
+        MEtGraf.setText("Metodo Grafico");
+        getContentPane().add(MEtGraf, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 190, -1, -1));
 
-        jButton5.setText("Metodo Iteracion de Punto Fijo");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        MetIPF.setText("Metodo Iteracion de Punto Fijo");
+        MetIPF.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                MetIPFActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 230, -1, -1));
+        getContentPane().add(MetIPF, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 270, -1, -1));
 
-        jButton6.setText("Metodo Newton Raphson");
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
+        MetNR.setText("Metodo Newton Raphson");
+        MetNR.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
+                MetNRActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 190, -1, -1));
+        getContentPane().add(MetNR, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 230, -1, -1));
 
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("ANALISIS NUMERICO");
@@ -82,9 +84,16 @@ public class GeneralMenu extends javax.swing.JFrame {
         });
         getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(363, 0, 40, 30));
 
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("¿Con que metodo desea calcular la raiz?");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 140, -1, -1));
+
+        cmbselect.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "--Seleccione Ecuacion--", "1", "2", "3", "4", "5" }));
+        getContentPane().add(cmbselect, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 70, 130, 30));
+
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/fondo-negro.jpg"))); // NOI18N
         jLabel2.setText("jLabel2");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 410, 300));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 440, 320));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -93,29 +102,26 @@ public class GeneralMenu extends javax.swing.JFrame {
 System.exit(0);
     }//GEN-LAST:event_jButton4ActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        Biseccion b =new Biseccion();
-        b.show();
-        this.show(false);
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-       FalsaPosicion f = new FalsaPosicion();
-       f.show();
-       this.show(false);
-    }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        NewtonRaphson n = new NewtonRaphson();
+    private void MetBissActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MetBissActionPerformed
         n.show();
         this.show(false);
-    }//GEN-LAST:event_jButton6ActionPerformed
+    }//GEN-LAST:event_MetBissActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        PuntoFijo p = new  PuntoFijo();
-        p.show();
+    private void MetFPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MetFPActionPerformed
+        
+        n.show();
         this.show(false);
-    }//GEN-LAST:event_jButton5ActionPerformed
+    }//GEN-LAST:event_MetFPActionPerformed
+
+    private void MetNRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MetNRActionPerformed
+        n.show();
+        this.show(false);
+    }//GEN-LAST:event_MetNRActionPerformed
+
+    private void MetIPFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MetIPFActionPerformed
+        n.show();
+        this.show(false);
+    }//GEN-LAST:event_MetIPFActionPerformed
 
     /**
      * @param args the command line arguments
@@ -153,13 +159,15 @@ System.exit(0);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton MEtGraf;
+    private javax.swing.JButton MetBiss;
+    private javax.swing.JButton MetFP;
+    private javax.swing.JButton MetIPF;
+    private javax.swing.JButton MetNR;
+    private javax.swing.JComboBox cmbselect;
     private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     // End of variables declaration//GEN-END:variables
 }
