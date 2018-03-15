@@ -2,11 +2,12 @@
 package guia02analisis;
 
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 public class FalsaPosicion {
+    DefaultTableModel modelo = new DefaultTableModel(new Object[]{"iteracion","Xi","Xu","Xr","F(Xr)","Ea%"}, 0);
     
-    
-   Double FalsaPos1(int c,int n){
+  public  DefaultTableModel FP1(int n){
       double xi=0,xu=1,xr=0,funcion,xrant=0,Es,funxu,funxi;
       double Ea=100;
       int i=1;
@@ -22,6 +23,11 @@ public class FalsaPosicion {
               xr=xu-((funxu*(xi-xu))/(funxi-funxu));
               funcion=funxi*(Math.exp(xr-1)-(1.5*xr));
               Ea=((xr-xrant)/xr)*100;
+              if(i==1){
+                  modelo.addRow(new Object []{i,xi,xu,(Metodos.redondearDecimales(xr, n)),funcion,"--"});
+              }else{
+                  modelo.addRow(new Object []{i,xi,xu,(Metodos.redondearDecimales(xr, n)),funcion,(Metodos.redondearDecimales(Ea, n))});
+              }
               if (funcion<0) {
                   xu=xr;
               }else{
@@ -32,14 +38,10 @@ public class FalsaPosicion {
               xrant=xr;
                i++;
           }
-         if(c==1){
-             return Metodos.redondearDecimales(xr, n);
-         }else{
-             return Math.abs(Ea);
-         }
+         return modelo;
       }
     }
-   Double FalsaPos2(int c,int n){
+   public  DefaultTableModel FP2(int n){
       double xi=-2.3562,xu=Math.PI,xr=0,funcion,xrant=0,Es,funxu,funxi;
       double Ea=100;
       int i=1;
@@ -55,6 +57,11 @@ public class FalsaPosicion {
               xr=xu-((funxu*(xi-xu))/(funxi-funxu));
               funcion=funxi*((2*Math.sin(xr))-xr);
               Ea=((xr-xrant)/xr)*100;
+              if(i==1){
+                  modelo.addRow(new Object []{i,xi,xu,(Metodos.redondearDecimales(xr, n)),funcion,"--"});
+              }else{
+                  modelo.addRow(new Object []{i,xi,xu,(Metodos.redondearDecimales(xr, n)),funcion,(Metodos.redondearDecimales(Ea, n))});
+              }
               if (funcion<0) {
                   xu=xr;
               }else{
@@ -65,14 +72,10 @@ public class FalsaPosicion {
               xrant=xr;
                i++;
           }
-         if(c==1){
-             return Metodos.redondearDecimales(xr, n);
-         }else{
-             return Metodos.redondearDecimales(Math.abs(Ea), n);
-         }
+         return modelo;
       }
     }
-   Double FalsaPos3(int c,int n){
+   public  DefaultTableModel FP3(int n){
       double xi=1,xu=2,xr=0,funcion,xrant=0,Es,funxu,funxi;
       double Ea=100;
       int i=1;
@@ -88,6 +91,11 @@ public class FalsaPosicion {
               xr=xu-((funxu*(xi-xu))/(funxi-funxu));
               funcion=funxi*((Math.exp(xr))-4);
               Ea=((xr-xrant)/xr)*100;
+              if(i==1){
+                  modelo.addRow(new Object []{i,xi,xu,(Metodos.redondearDecimales(xr, n)),funcion,"--"});
+              }else{
+                  modelo.addRow(new Object []{i,xi,xu,(Metodos.redondearDecimales(xr, n)),funcion,(Metodos.redondearDecimales(Ea, n))});
+              }
               if (funcion<0) {
                   xu=xr;
               }else{
@@ -98,14 +106,10 @@ public class FalsaPosicion {
               xrant=xr;
                i++;
           }
-         if(c==1){
-             return Metodos.redondearDecimales(xr, n);
-         }else{
-             return Metodos.redondearDecimales(Math.abs(Ea), n);
-         }
+        return modelo;
       }
     }
-    Double FalsaPos4(int c,int n){
+    public  DefaultTableModel FP4(int n){
       double xi=-1,xu=0,xr=0,funcion,xrant=0,Es,funxu,funxi;
       double Ea=100;
       int i=1;
@@ -121,6 +125,11 @@ public class FalsaPosicion {
               xr=xu-((funxu*(xi-xu))/(funxi-funxu));
               funcion=funxi*(((Math.exp(-(xr-1)))*(Math.sin(xr)))-1);
               Ea=((xr-xrant)/xr)*100;
+              if(i==1){
+                  modelo.addRow(new Object []{i,xi,xu,(Metodos.redondearDecimales(xr, n)),funcion,"--"});
+              }else{
+                  modelo.addRow(new Object []{i,xi,xu,(Metodos.redondearDecimales(xr, n)),funcion,(Metodos.redondearDecimales(Ea, n))});
+              }
               if (funcion<0) {
                   xu=xr;
               }else{
@@ -131,14 +140,10 @@ public class FalsaPosicion {
               xrant=xr;
                i++;
           }
-         if(c==1){
-             return Metodos.redondearDecimales(xr, n);
-         }else{
-             return Metodos.redondearDecimales(Math.abs(Ea), n);
-         }
+       return modelo;
       }
     }
-    Double FalsaPos5(int c,int n){
+   public  DefaultTableModel FP5(int n){
       double xi=0,xu=0.5,xr=0,funcion,xrant=0,Es,funxu,funxi;
       double Ea=100;
       int i=1;
@@ -154,6 +159,11 @@ public class FalsaPosicion {
               xr=xu-((funxu*(xi-xu))/(funxi-funxu));
               funcion=funxi*(4*Math.sin(xr)-Math.exp(xr));
               Ea=((xr-xrant)/xr)*100;
+              if(i==1){
+                  modelo.addRow(new Object []{i,xi,xu,(Metodos.redondearDecimales(xr, n)),funcion,"--"});
+              }else{
+                  modelo.addRow(new Object []{i,xi,xu,(Metodos.redondearDecimales(xr, n)),funcion,(Metodos.redondearDecimales(Ea, n))});
+              }
               if (funcion<0) {
                   xu=xr;
               }else{
@@ -164,11 +174,7 @@ public class FalsaPosicion {
               xrant=xr;
                i++;
           }
-         if(c==1){
-             return Metodos.redondearDecimales(xr, n);
-         }else{
-             return Metodos.redondearDecimales(Math.abs(Ea), n);
-         }
+        return modelo;
       }
     }
    //fin de falsa posicion

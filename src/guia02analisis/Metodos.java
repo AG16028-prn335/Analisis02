@@ -24,6 +24,6 @@ public class Metodos {
         }
       }
     public static String Decimal(double n){
-        return new DecimalFormat("#.#######").format(n);     
+        return new DecimalFormat("#.##############").format(n);     
     }
 }

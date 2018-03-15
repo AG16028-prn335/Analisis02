@@ -2,7 +2,6 @@
 package Interfaces;
 
 public class GeneralMenu extends javax.swing.JFrame {
-NewtonRaphson n = new NewtonRaphson();
     /**
      * Creates new form GeneralMenu
      */
@@ -21,59 +20,20 @@ NewtonRaphson n = new NewtonRaphson();
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        MetBiss = new javax.swing.JButton();
-        MetFP = new javax.swing.JButton();
-        MEtGraf = new javax.swing.JButton();
-        MetIPF = new javax.swing.JButton();
-        MetNR = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jButton4 = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        cmbselect = new javax.swing.JComboBox();
+        jLabel5 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("ANALISIS NUMERICO 2018");
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        MetBiss.setText("Metodo Biseccion");
-        MetBiss.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MetBissActionPerformed(evt);
-            }
-        });
-        getContentPane().add(MetBiss, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 190, -1, -1));
-
-        MetFP.setText("Metodo Falsa Posicion");
-        MetFP.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MetFPActionPerformed(evt);
-            }
-        });
-        getContentPane().add(MetFP, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 230, -1, -1));
-
-        MEtGraf.setText("Metodo Grafico");
-        getContentPane().add(MEtGraf, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 190, -1, -1));
-
-        MetIPF.setText("Metodo Iteracion de Punto Fijo");
-        MetIPF.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MetIPFActionPerformed(evt);
-            }
-        });
-        getContentPane().add(MetIPF, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 270, -1, -1));
-
-        MetNR.setText("Metodo Newton Raphson");
-        MetNR.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MetNRActionPerformed(evt);
-            }
-        });
-        getContentPane().add(MetNR, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 230, -1, -1));
-
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("ANALISIS NUMERICO");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 20, -1, 20));
+        jLabel1.setText("JACQUELINE ANDREA MAGAÑA QUINTANILLA   MQ16001");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 160, -1, 20));
 
         jButton4.setBackground(new java.awt.Color(0, 0, 0));
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/_active__no.png"))); // NOI18N
@@ -82,14 +42,19 @@ NewtonRaphson n = new NewtonRaphson();
                 jButton4ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(363, 0, 40, 30));
+        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 0, 40, 30));
+
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("HECHO POR:");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 70, -1, 30));
 
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("¿Con que metodo desea calcular la raiz?");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 140, -1, -1));
+        jLabel3.setText("RONALD BAMORE AREVALO GONZALEZ     AG16028");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 120, -1, 20));
 
-        cmbselect.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "--Seleccione Ecuacion--", "1", "2", "3", "4", "5" }));
-        getContentPane().add(cmbselect, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 70, 130, 30));
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setText("ANALISIS NUMERICO");
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 16, -1, -1));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/fondo-negro.jpg"))); // NOI18N
         jLabel2.setText("jLabel2");
@@ -101,27 +66,6 @@ NewtonRaphson n = new NewtonRaphson();
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
 System.exit(0);
     }//GEN-LAST:event_jButton4ActionPerformed
-
-    private void MetBissActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MetBissActionPerformed
-        n.show();
-        this.show(false);
-    }//GEN-LAST:event_MetBissActionPerformed
-
-    private void MetFPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MetFPActionPerformed
-        
-        n.show();
-        this.show(false);
-    }//GEN-LAST:event_MetFPActionPerformed
-
-    private void MetNRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MetNRActionPerformed
-        n.show();
-        this.show(false);
-    }//GEN-LAST:event_MetNRActionPerformed
-
-    private void MetIPFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MetIPFActionPerformed
-        n.show();
-        this.show(false);
-    }//GEN-LAST:event_MetIPFActionPerformed
 
     /**
      * @param args the command line arguments
@@ -159,15 +103,11 @@ System.exit(0);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton MEtGraf;
-    private javax.swing.JButton MetBiss;
-    private javax.swing.JButton MetFP;
-    private javax.swing.JButton MetIPF;
-    private javax.swing.JButton MetNR;
-    private javax.swing.JComboBox cmbselect;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     // End of variables declaration//GEN-END:variables
 }

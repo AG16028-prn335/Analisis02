@@ -1,13 +1,31 @@
-
 package Interfaces;
 
 import guia02analisis.Bisecciones;
+import guia02analisis.FalsaPosicion;
+import guia02analisis.Metodos;
+import guia02analisis.Newtonraphson;
+import guia02analisis.PuntoFijo;
+import javax.swing.table.DefaultTableModel;
+
 public class Tabla extends javax.swing.JFrame {
+
     Bisecciones b = new Bisecciones();
+    FalsaPosicion f = new FalsaPosicion();
+    Newtonraphson nr = new Newtonraphson();
+    PuntoFijo pf = new PuntoFijo();
+    DefaultTableModel m = new DefaultTableModel(new Object[]{"iteracion", "Xi", "Xu", "Xr", "F(Xr)", "Ea%"}, 0);
+    int row,i;
+    double Error;
+
     public Tabla() {
         initComponents();
-        jtbTabal.setModel(b.Biseccion1(7));
+        txtError.setEditable(false);
+        txtRaiz.setEditable(false);
+        Nver();
+        btnVer();
+
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -17,14 +35,46 @@ public class Tabla extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        MetFP = new javax.swing.JButton();
+        MetBiss = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jtbTabal = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        txtError = new javax.swing.JTextField();
+        txtRaiz = new javax.swing.JTextField();
+        cmbSelect = new javax.swing.JComboBox();
+        MEtGraf = new javax.swing.JButton();
+        MetNR = new javax.swing.JButton();
+        MetIPF = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        MetFP.setText("Metodo Falsa Posicion");
+        MetFP.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                MetFPItemStateChanged(evt);
+            }
+        });
+        MetFP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MetFPActionPerformed(evt);
+            }
+        });
+        getContentPane().add(MetFP, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 40, -1, -1));
+
+        MetBiss.setText("Metodo Biseccion");
+        MetBiss.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MetBissActionPerformed(evt);
+            }
+        });
+        getContentPane().add(MetBiss, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 40, -1, -1));
 
         jtbTabal.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -39,10 +89,15 @@ public class Tabla extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jtbTabal);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 730, 190));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, 830, 230));
 
         jButton1.setText("Regresar");
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 300, -1, -1));
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 460, -1, -1));
 
         jButton4.setBackground(new java.awt.Color(0, 0, 0));
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/_active__no.png"))); // NOI18N
@@ -51,11 +106,52 @@ public class Tabla extends javax.swing.JFrame {
                 jButton4ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 0, 40, 30));
+        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 0, 40, 30));
+
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("RAIZ: ");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 110, 40, -1));
+
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("F(x)=");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 40, 30, 30));
+
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("ERROR: ");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 110, -1, -1));
+        getContentPane().add(txtError, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 110, 190, -1));
+        getContentPane().add(txtRaiz, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 110, 160, -1));
+
+        cmbSelect.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "--Selecione una ecuacion--", "(e^(x-1))-1.5x=0", "2", "3", "4", "5" }));
+        cmbSelect.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cmbSelectItemStateChanged(evt);
+            }
+        });
+        getContentPane().add(cmbSelect, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 50, 250, -1));
+
+        MEtGraf.setText("Metodo Grafico");
+        getContentPane().add(MEtGraf, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 40, -1, -1));
+
+        MetNR.setText("Metodo Newton Raphson");
+        MetNR.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MetNRActionPerformed(evt);
+            }
+        });
+        getContentPane().add(MetNR, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 40, -1, -1));
+
+        MetIPF.setText("Metodo Iteracion de Punto Fijo");
+        MetIPF.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MetIPFActionPerformed(evt);
+            }
+        });
+        getContentPane().add(MetIPF, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 40, -1, -1));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/fondo-negro.jpg"))); // NOI18N
         jLabel2.setText("jLabel2");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 740, 330));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 910, 490));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -63,7 +159,212 @@ public class Tabla extends javax.swing.JFrame {
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         System.exit(0);
     }//GEN-LAST:event_jButton4ActionPerformed
-    
+
+    private void cmbSelectItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbSelectItemStateChanged
+        int p = cmbSelect.getSelectedIndex();
+        limpiar();
+        VERTa(i, p);
+
+        switch (p) {
+            case 0:
+                jtbTabal.setVisible(false);
+                break;
+            case 1:
+                jtbTabal.setVisible(true);
+                jtbTabal.setModel(m);
+                mostrar(i);
+                break;
+            case 2:
+                jtbTabal.setVisible(true);
+                jtbTabal.setModel(m);
+                mostrar(i);
+                break;
+            case 3:
+                jtbTabal.setVisible(true);
+                jtbTabal.setModel(m);
+                mostrar(i);
+                break;
+            case 4:
+                jtbTabal.setVisible(true);
+                jtbTabal.setModel(m);
+                mostrar(i);
+                break;
+            case 5:
+                jtbTabal.setVisible(true);
+                jtbTabal.setModel(m);
+                mostrar(i);
+                break;
+            default:
+                jtbTabal.setVisible(true);
+                break;
+        }
+
+    }//GEN-LAST:event_cmbSelectItemStateChanged
+
+    private void MetBissActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MetBissActionPerformed
+        btnNVer();
+        ver();
+        i=1;
+    }//GEN-LAST:event_MetBissActionPerformed
+
+    private void MetFPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MetFPActionPerformed
+          btnNVer();
+        ver();
+        i=2;
+    }//GEN-LAST:event_MetFPActionPerformed
+
+    private void MetNRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MetNRActionPerformed
+          btnNVer();
+        ver();
+        i=3;
+    }//GEN-LAST:event_MetNRActionPerformed
+    private void MetIPFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MetIPFActionPerformed
+          btnNVer();
+        ver();
+        i=4;
+    }//GEN-LAST:event_MetIPFActionPerformed
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        Nver();
+        btnVer();
+        cmbSelect.setSelectedIndex(0);
+        txtError.setText("");
+        txtRaiz.setText("");
+    }//GEN-LAST:event_jButton1ActionPerformed
+    private void MetFPItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_MetFPItemStateChanged
+    }//GEN-LAST:event_MetFPItemStateChanged
+    public void mostrar(int n) {
+       switch(n){
+           case 1 : case 2 :
+                row = jtbTabal.getRowCount();
+        Error = Math.abs((double) jtbTabal.getValueAt(row - 1, 5));
+        txtRaiz.setText(jtbTabal.getValueAt(row - 1, 3).toString());
+        txtError.setText(Metodos.Decimal(Error) + "%");
+               break;
+           case 3: case 4:
+                row = jtbTabal.getRowCount();
+        Error = Math.abs((double) jtbTabal.getValueAt(row - 1, 3));
+        txtRaiz.setText(jtbTabal.getValueAt(row - 1, 2).toString());
+        txtError.setText(Metodos.Decimal(Error) + "%");
+       }
+    }
+    public void Nver() {
+        jtbTabal.setVisible(false);
+        cmbSelect.setVisible(false);
+        txtError.setVisible(false);
+        txtRaiz.setVisible(false);
+        jLabel1.setVisible(false);
+        jLabel4.setVisible(false);
+        jLabel3.setVisible(false);
+    }
+    public void ver() {
+        cmbSelect.setVisible(true);
+        txtError.setVisible(true);
+        txtRaiz.setVisible(true);
+        jLabel1.setVisible(true);
+        jLabel4.setVisible(true);
+        jLabel3.setVisible(true);
+    }
+    public void limpiar() {
+        int row = m.getRowCount();
+        for (int i = 0; i < row; i++) {
+            m.removeRow(0);
+        }
+    }
+    public void btnNVer() {
+        MetBiss.setVisible(false);
+        MetFP.setVisible(false);
+        MetIPF.setVisible(false);
+        MetNR.setVisible(false);
+        MEtGraf.setVisible(false);
+    }
+    public void btnVer() {
+        MetBiss.setVisible(true);
+        MetFP.setVisible(true);
+        MetIPF.setVisible(true);
+        MetNR.setVisible(true);
+        MEtGraf.setVisible(true);
+    }
+    public void VERTa(int n, int p) {
+        switch (n) {
+            case 1:
+                switch (p) {
+                    case 1:
+                        m = b.Biseccion1(7);
+                        break;
+                    case 2:
+                        m = b.Biseccion2(3);
+                        break;
+                    case 3:
+                        m = b.Biseccion3(4);
+                        break;
+                    case 4:
+                        m = b.Biseccion4(3);
+                        break;
+                    case 5:
+                        m = b.Biseccion5(4);
+                        break;
+                }
+                break;
+            case 2:
+                switch (p) {
+                    case 1:
+                        m = f.FP1(7);
+                        break;
+                    case 2:
+                        m = f.FP2(3);
+                        break;
+                    case 3:
+                        m = f.FP3(4);
+                        break;
+                    case 4:
+                       m = f.FP4(3);
+                        break;
+                    case 5:
+                       m = f.FP5(4);
+                        break;
+                }
+                break;
+            case 3:
+                switch (p) {
+                    case 1:
+                        m = nr.NR1();
+                        break;
+                    case 2:
+                      m = nr.NR2();
+                        break;
+                    case 3:
+                       m = nr.NR3();
+                        break;
+                    case 4:
+                        m = nr.NR4();
+                        break;
+                    case 5:
+                        m = nr.NR5();
+                        break;
+                }
+                break;
+            case 4:
+                switch (p) {
+                    case 1:
+                        m=pf.PF1();
+                        break;
+                    case 2:
+                        m=pf.PF2();
+                        break;
+                    case 3:
+                        m=pf.PF3();
+                        break;
+                    case 4:
+                        m=pf.PF4();
+                        break;
+                    case 5:
+                        m=pf.PF5();
+                        break;
+                }
+                break;
+        }
+    }
+
     /**
      * @param args the command line arguments
      */
@@ -100,10 +401,21 @@ public class Tabla extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton MEtGraf;
+    private javax.swing.JButton MetBiss;
+    private javax.swing.JButton MetFP;
+    private javax.swing.JButton MetIPF;
+    private javax.swing.JButton MetNR;
+    private javax.swing.JComboBox cmbSelect;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton4;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jtbTabal;
+    private javax.swing.JTextField txtError;
+    private javax.swing.JTextField txtRaiz;
     // End of variables declaration//GEN-END:variables
 }
