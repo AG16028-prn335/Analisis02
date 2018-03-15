@@ -15,7 +15,7 @@ public class PuntoFijo {
             error=(Gx-x)/Gx*100;
             x=Gx;
             ite++;
-          modelo.addRow(new Object[]{ite,x,Gx,error});
+          modelo.addRow(new Object[]{ite,(Metodos.redondearDecimales(x, cifS)),(Metodos.redondearDecimales(Gx, cifS)),Metodos.redondearDecimales(error, cifS)});
          }
          return modelo;
     }
@@ -30,7 +30,7 @@ public class PuntoFijo {
             error = (Gx - x) / Gx * 100;
             x = Gx;
             ite++;
-          modelo.addRow(new Object[]{ite,x,Gx,error});
+          modelo.addRow(new Object[]{ite,(Metodos.redondearDecimales(x, cifS)),(Metodos.redondearDecimales(Gx, cifS)),Metodos.redondearDecimales(error, cifS)});
          }
          return modelo;
     }
@@ -44,7 +44,7 @@ public class PuntoFijo {
             error=(Gx-x)/Gx*100;
             x=Gx;
             ite++;
-          modelo.addRow(new Object[]{ite,x,Gx,error});
+          modelo.addRow(new Object[]{ite,(Metodos.redondearDecimales(x, cifS)),(Metodos.redondearDecimales(Gx, cifS)),Metodos.redondearDecimales(error, cifS)});
          }
          return modelo;
     }
@@ -58,7 +58,7 @@ public class PuntoFijo {
             error = (Gx - x) / Gx * 100;
             x = Gx;
             ite++;
-          modelo.addRow(new Object[]{ite,x,Gx,error});
+          modelo.addRow(new Object[]{ite,(Metodos.redondearDecimales(x, cifS)),(Metodos.redondearDecimales(Gx, cifS)),Metodos.redondearDecimales(error, cifS)});
          }
          return modelo;
     }
@@ -72,7 +72,7 @@ public class PuntoFijo {
             error = (Gx - x) / Gx * 100;
             x = Gx;
             ite++;
-          modelo.addRow(new Object[]{ite,x,Gx,error});
+          modelo.addRow(new Object[]{ite,(Metodos.redondearDecimales(x, cifS)),(Metodos.redondearDecimales(Gx, cifS)),Metodos.redondearDecimales(error, cifS)});
          }
          return modelo;
     }

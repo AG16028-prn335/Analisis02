@@ -24,9 +24,9 @@ public class FalsaPosicion {
               funcion=funxi*(Math.exp(xr-1)-(1.5*xr));
               Ea=((xr-xrant)/xr)*100;
               if(i==1){
-                  modelo.addRow(new Object []{i,xi,xu,(Metodos.redondearDecimales(xr, n)),funcion,"--"});
+                  modelo.addRow(new Object []{i,(Metodos.redondearDecimales(xi, n)),(Metodos.redondearDecimales(xu, n)),(Metodos.redondearDecimales(xr, n)),funcion,"--"});
               }else{
-                  modelo.addRow(new Object []{i,xi,xu,(Metodos.redondearDecimales(xr, n)),funcion,(Metodos.redondearDecimales(Ea, n))});
+                  modelo.addRow(new Object []{i,(Metodos.redondearDecimales(xi, n)),(Metodos.redondearDecimales(xu, n)),(Metodos.redondearDecimales(xr, n)),funcion,(Metodos.redondearDecimales(Ea, n))});
               }
               if (funcion<0) {
                   xu=xr;
@@ -58,9 +58,9 @@ public class FalsaPosicion {
               funcion=funxi*((2*Math.sin(xr))-xr);
               Ea=((xr-xrant)/xr)*100;
               if(i==1){
-                  modelo.addRow(new Object []{i,xi,xu,(Metodos.redondearDecimales(xr, n)),funcion,"--"});
+                  modelo.addRow(new Object []{i,(Metodos.redondearDecimales(xi, n)),(Metodos.redondearDecimales(xu, n)),(Metodos.redondearDecimales(xr, n)),funcion,"--"});
               }else{
-                  modelo.addRow(new Object []{i,xi,xu,(Metodos.redondearDecimales(xr, n)),funcion,(Metodos.redondearDecimales(Ea, n))});
+                  modelo.addRow(new Object []{i,(Metodos.redondearDecimales(xi, n)),(Metodos.redondearDecimales(xu, n)),(Metodos.redondearDecimales(xr, n)),funcion,(Metodos.redondearDecimales(Ea, n))});
               }
               if (funcion<0) {
                   xu=xr;
@@ -92,9 +92,9 @@ public class FalsaPosicion {
               funcion=funxi*((Math.exp(xr))-4);
               Ea=((xr-xrant)/xr)*100;
               if(i==1){
-                  modelo.addRow(new Object []{i,xi,xu,(Metodos.redondearDecimales(xr, n)),funcion,"--"});
+                  modelo.addRow(new Object []{i,(Metodos.redondearDecimales(xi, n)),(Metodos.redondearDecimales(xu, n)),(Metodos.redondearDecimales(xr, n)),funcion,"--"});
               }else{
-                  modelo.addRow(new Object []{i,xi,xu,(Metodos.redondearDecimales(xr, n)),funcion,(Metodos.redondearDecimales(Ea, n))});
+                  modelo.addRow(new Object []{i,(Metodos.redondearDecimales(xi, n)),(Metodos.redondearDecimales(xu, n)),(Metodos.redondearDecimales(xr, n)),funcion,(Metodos.redondearDecimales(Ea, n))});
               }
               if (funcion<0) {
                   xu=xr;
@@ -126,9 +126,9 @@ public class FalsaPosicion {
               funcion=funxi*(((Math.exp(-(xr-1)))*(Math.sin(xr)))-1);
               Ea=((xr-xrant)/xr)*100;
               if(i==1){
-                  modelo.addRow(new Object []{i,xi,xu,(Metodos.redondearDecimales(xr, n)),funcion,"--"});
+                  modelo.addRow(new Object []{i,(Metodos.redondearDecimales(xi, n)),(Metodos.redondearDecimales(xu, n)),(Metodos.redondearDecimales(xr, n)),funcion,"--"});
               }else{
-                  modelo.addRow(new Object []{i,xi,xu,(Metodos.redondearDecimales(xr, n)),funcion,(Metodos.redondearDecimales(Ea, n))});
+                  modelo.addRow(new Object []{i,(Metodos.redondearDecimales(xi, n)),(Metodos.redondearDecimales(xu, n)),(Metodos.redondearDecimales(xr, n)),funcion,(Metodos.redondearDecimales(Ea, n))});
               }
               if (funcion<0) {
                   xu=xr;
@@ -160,9 +160,9 @@ public class FalsaPosicion {
               funcion=funxi*(4*Math.sin(xr)-Math.exp(xr));
               Ea=((xr-xrant)/xr)*100;
               if(i==1){
-                  modelo.addRow(new Object []{i,xi,xu,(Metodos.redondearDecimales(xr, n)),funcion,"--"});
+                  modelo.addRow(new Object []{i,(Metodos.redondearDecimales(xi, n)),(Metodos.redondearDecimales(xu, n)),(Metodos.redondearDecimales(xr, n)),funcion,"--"});
               }else{
-                  modelo.addRow(new Object []{i,xi,xu,(Metodos.redondearDecimales(xr, n)),funcion,(Metodos.redondearDecimales(Ea, n))});
+                  modelo.addRow(new Object []{i,(Metodos.redondearDecimales(xi, n)),(Metodos.redondearDecimales(xu, n)),(Metodos.redondearDecimales(xr, n)),funcion,(Metodos.redondearDecimales(Ea, n))});
               }
               if (funcion<0) {
                   xu=xr;

@@ -70,7 +70,7 @@ public class Tabla extends javax.swing.JFrame {
                 MetFPActionPerformed(evt);
             }
         });
-        getContentPane().add(MetFP, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 40, -1, -1));
+        getContentPane().add(MetFP, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 40, -1, -1));
 
         MetBiss.setText("Metodo Biseccion");
         MetBiss.addActionListener(new java.awt.event.ActionListener() {
@@ -78,7 +78,7 @@ public class Tabla extends javax.swing.JFrame {
                 MetBissActionPerformed(evt);
             }
         });
-        getContentPane().add(MetBiss, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 40, -1, -1));
+        getContentPane().add(MetBiss, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, -1, -1));
 
         jScrollPane1.setName("METODOS "); // NOI18N
 
@@ -142,7 +142,7 @@ public class Tabla extends javax.swing.JFrame {
                 MEtGrafActionPerformed(evt);
             }
         });
-        getContentPane().add(MEtGraf, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 40, -1, -1));
+        getContentPane().add(MEtGraf, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 40, -1, -1));
 
         MetNR.setText("Metodo Newton Raphson");
         MetNR.addActionListener(new java.awt.event.ActionListener() {
@@ -158,7 +158,7 @@ public class Tabla extends javax.swing.JFrame {
                 MetIPFActionPerformed(evt);
             }
         });
-        getContentPane().add(MetIPF, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 40, -1, -1));
+        getContentPane().add(MetIPF, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 40, -1, -1));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/fondo-negro.jpg"))); // NOI18N
         jLabel2.setText("jLabel2");

@@ -19,7 +19,7 @@ public class Newtonraphson {
             error=(x1-x)/x1*100;
             x=x1;
             ite++;
-            modelo.addRow(new Object[]{ite,x,x1,error});
+            modelo.addRow(new Object[]{ite,(Metodos.redondearDecimales(x, cifS)),(Metodos.redondearDecimales(x1, cifS)),Metodos.redondearDecimales(error, cifS)});
          }
          return modelo;
     }  
@@ -33,7 +33,7 @@ public class Newtonraphson {
             error = (x1 - x) / x1 * 100;
             x = x1;
             ite++;
-         modelo.addRow(new Object[]{ite,x,x1,error});
+         modelo.addRow(new Object[]{ite,(Metodos.redondearDecimales(x, cifS)),(Metodos.redondearDecimales(x1, cifS)),Metodos.redondearDecimales(error, cifS)});
          }
          return modelo; 
     }
@@ -47,7 +47,7 @@ public class Newtonraphson {
             error=(x1-x)/x1*100;
             x=x1;
             ite++;
-          modelo.addRow(new Object[]{ite,x,x1,error});
+          modelo.addRow(new Object[]{ite,(Metodos.redondearDecimales(x, cifS)),(Metodos.redondearDecimales(x1, cifS)),Metodos.redondearDecimales(error, cifS)});
          }
          return modelo; 
     }
@@ -62,7 +62,7 @@ public class Newtonraphson {
             error = (x1 - x) / x1 * 100;
             x = x1;
             ite++;
-          modelo.addRow(new Object[]{ite,x,x1,error});
+          modelo.addRow(new Object[]{ite,(Metodos.redondearDecimales(x, cifS)),(Metodos.redondearDecimales(x1, cifS)),Metodos.redondearDecimales(error, cifS)});
          }
          return modelo; 
     }
@@ -76,7 +76,7 @@ public class Newtonraphson {
             error=(x1-x)/x1*100;
             x=x1;
             ite++;
-          modelo.addRow(new Object[]{ite,x,x1,error});
+          modelo.addRow(new Object[]{ite,(Metodos.redondearDecimales(x, cifS)),(Metodos.redondearDecimales(x1, cifS)),Metodos.redondearDecimales(error, cifS)});
          }
          return modelo; 
     }
