@@ -14,13 +14,15 @@ public class Tabla extends javax.swing.JFrame {
     Newtonraphson nr = new Newtonraphson();
     PuntoFijo pf = new PuntoFijo();
     DefaultTableModel m = new DefaultTableModel(new Object[]{"iteracion", "Xi", "Xu", "Xr", "F(Xr)", "Ea%"}, 0);
-    int row,i;
+    int row, i = 0;
     double Error;
 
     public Tabla() {
         initComponents();
         txtError.setEditable(false);
         txtRaiz.setEditable(false);
+        this.setResizable(false);
+        this.setLocationRelativeTo(null); this.setLocationRelativeTo(null);
         Nver();
         btnVer();
 
@@ -53,6 +55,8 @@ public class Tabla extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("METODOS ");
+        setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         MetFP.setText("Metodo Falsa Posicion");
@@ -76,6 +80,8 @@ public class Tabla extends javax.swing.JFrame {
         });
         getContentPane().add(MetBiss, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 40, -1, -1));
 
+        jScrollPane1.setName("METODOS "); // NOI18N
+
         jtbTabal.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -89,7 +95,7 @@ public class Tabla extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jtbTabal);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, 830, 230));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, 830, 230));
 
         jButton1.setText("Regresar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -122,7 +128,7 @@ public class Tabla extends javax.swing.JFrame {
         getContentPane().add(txtError, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 110, 190, -1));
         getContentPane().add(txtRaiz, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 110, 160, -1));
 
-        cmbSelect.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "--Selecione una ecuacion--", "(e^(x-1))-1.5x=0", "2", "3", "4", "5" }));
+        cmbSelect.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "--Selecione una ecuacion--", "e^(x-1) -1.5x=0", "2senx=x", "e^x - 4 = 0", "e^-(x-1)*sen(x) = 1", "4sen(x) = e^x" }));
         cmbSelect.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 cmbSelectItemStateChanged(evt);
@@ -131,6 +137,11 @@ public class Tabla extends javax.swing.JFrame {
         getContentPane().add(cmbSelect, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 50, 250, -1));
 
         MEtGraf.setText("Metodo Grafico");
+        MEtGraf.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MEtGrafActionPerformed(evt);
+            }
+        });
         getContentPane().add(MEtGraf, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 40, -1, -1));
 
         MetNR.setText("Metodo Newton Raphson");
@@ -204,49 +215,65 @@ public class Tabla extends javax.swing.JFrame {
     private void MetBissActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MetBissActionPerformed
         btnNVer();
         ver();
-        i=1;
+        i = 1;
     }//GEN-LAST:event_MetBissActionPerformed
 
     private void MetFPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MetFPActionPerformed
-          btnNVer();
+        btnNVer();
         ver();
-        i=2;
+        i = 2;
     }//GEN-LAST:event_MetFPActionPerformed
 
     private void MetNRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MetNRActionPerformed
-          btnNVer();
+        btnNVer();
         ver();
-        i=3;
+        i = 3;
     }//GEN-LAST:event_MetNRActionPerformed
     private void MetIPFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MetIPFActionPerformed
-          btnNVer();
+        btnNVer();
         ver();
-        i=4;
+        i = 4;
     }//GEN-LAST:event_MetIPFActionPerformed
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        Nver();
-        btnVer();
-        cmbSelect.setSelectedIndex(0);
-        txtError.setText("");
-        txtRaiz.setText("");
+        if (i != 0) {
+            Nver();
+            btnVer();
+            cmbSelect.setSelectedIndex(0);
+            txtError.setText("");
+            txtRaiz.setText("");
+            i = 0;
+        } else {
+            GeneralMenu gm = new GeneralMenu();
+            gm.show();
+            this.setVisible(false);
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
     private void MetFPItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_MetFPItemStateChanged
     }//GEN-LAST:event_MetFPItemStateChanged
+
+    private void MEtGrafActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MEtGrafActionPerformed
+        Graficos n = new Graficos();
+        n.show();
+        this.setVisible(false);
+    }//GEN-LAST:event_MEtGrafActionPerformed
     public void mostrar(int n) {
-       switch(n){
-           case 1 : case 2 :
+        switch (n) {
+            case 1:
+            case 2:
                 row = jtbTabal.getRowCount();
-        Error = Math.abs((double) jtbTabal.getValueAt(row - 1, 5));
-        txtRaiz.setText(jtbTabal.getValueAt(row - 1, 3).toString());
-        txtError.setText(Metodos.Decimal(Error) + "%");
-               break;
-           case 3: case 4:
+                Error = Math.abs((double) jtbTabal.getValueAt(row - 1, 5));
+                txtRaiz.setText(jtbTabal.getValueAt(row - 1, 3).toString());
+                txtError.setText(Metodos.Decimal(Error) + "%");
+                break;
+            case 3:
+            case 4:
                 row = jtbTabal.getRowCount();
-        Error = Math.abs((double) jtbTabal.getValueAt(row - 1, 3));
-        txtRaiz.setText(jtbTabal.getValueAt(row - 1, 2).toString());
-        txtError.setText(Metodos.Decimal(Error) + "%");
-       }
+                Error = Math.abs((double) jtbTabal.getValueAt(row - 1, 3));
+                txtRaiz.setText(jtbTabal.getValueAt(row - 1, 2).toString());
+                txtError.setText(Metodos.Decimal(Error) + "%");
+        }
     }
+
     public void Nver() {
         jtbTabal.setVisible(false);
         cmbSelect.setVisible(false);
@@ -256,6 +283,7 @@ public class Tabla extends javax.swing.JFrame {
         jLabel4.setVisible(false);
         jLabel3.setVisible(false);
     }
+
     public void ver() {
         cmbSelect.setVisible(true);
         txtError.setVisible(true);
@@ -264,12 +292,14 @@ public class Tabla extends javax.swing.JFrame {
         jLabel4.setVisible(true);
         jLabel3.setVisible(true);
     }
+
     public void limpiar() {
         int row = m.getRowCount();
         for (int i = 0; i < row; i++) {
             m.removeRow(0);
         }
     }
+
     public void btnNVer() {
         MetBiss.setVisible(false);
         MetFP.setVisible(false);
@@ -277,6 +307,7 @@ public class Tabla extends javax.swing.JFrame {
         MetNR.setVisible(false);
         MEtGraf.setVisible(false);
     }
+
     public void btnVer() {
         MetBiss.setVisible(true);
         MetFP.setVisible(true);
@@ -284,6 +315,7 @@ public class Tabla extends javax.swing.JFrame {
         MetNR.setVisible(true);
         MEtGraf.setVisible(true);
     }
+
     public void VERTa(int n, int p) {
         switch (n) {
             case 1:
@@ -317,10 +349,10 @@ public class Tabla extends javax.swing.JFrame {
                         m = f.FP3(4);
                         break;
                     case 4:
-                       m = f.FP4(3);
+                        m = f.FP4(3);
                         break;
                     case 5:
-                       m = f.FP5(4);
+                        m = f.FP5(4);
                         break;
                 }
                 break;
@@ -330,10 +362,10 @@ public class Tabla extends javax.swing.JFrame {
                         m = nr.NR1();
                         break;
                     case 2:
-                      m = nr.NR2();
+                        m = nr.NR2();
                         break;
                     case 3:
-                       m = nr.NR3();
+                        m = nr.NR3();
                         break;
                     case 4:
                         m = nr.NR4();
@@ -346,19 +378,19 @@ public class Tabla extends javax.swing.JFrame {
             case 4:
                 switch (p) {
                     case 1:
-                        m=pf.PF1();
+                        m = pf.PF1();
                         break;
                     case 2:
-                        m=pf.PF2();
+                        m = pf.PF2();
                         break;
                     case 3:
-                        m=pf.PF3();
+                        m = pf.PF3();
                         break;
                     case 4:
-                        m=pf.PF4();
+                        m = pf.PF4();
                         break;
                     case 5:
-                        m=pf.PF5();
+                        m = pf.PF5();
                         break;
                 }
                 break;
